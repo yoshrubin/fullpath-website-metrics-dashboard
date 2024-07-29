@@ -78,7 +78,7 @@ const filteredData = computed(() => {
 });
 
 // Format the data for display in the table
-const formattedTableData = computed(() => {
+const formattedTableData = computed<TableData[]>(() => {
   return filteredData.value.map((item) => {
     return {
       timestamp: format(parseISO(item.timestamp), "MMM dd, yyyy"),
@@ -86,16 +86,12 @@ const formattedTableData = computed(() => {
       clicks: item.clicks.toLocaleString(),
       cost: item.cost.toFixed(2).toLocaleString(),
       conversions: item.conversions.toLocaleString(),
-      costPerClick: (item.cost / item.clicks).toFixed(2).toLocaleString(),
-      costPerConversion: (item.cost / item.conversions)
-        .toFixed(2)
-        .toLocaleString(),
     };
   });
 });
 
 // Calculate key metrics
-const keyMetrics = computed(() => {
+const keyMetrics = computed<Metric[]>(() => {
   const totalImpressions = filteredData.value.reduce(
     (sum, item) => sum + item.impressions,
     0
@@ -134,7 +130,7 @@ const keyMetrics = computed(() => {
 });
 
 // Configure charts
-const charts = computed(() => {
+const charts = computed<ChartData[]>(() => {
   const timestamps = filteredData.value.map((item) => item.timestamp);
   const options = {
     responsive: true,

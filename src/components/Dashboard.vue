@@ -38,25 +38,7 @@ import LineChart from "./LineChart.vue";
 import MetricsTable from "./MetricsTable.vue";
 import data from "../sample.json";
 import { format, parseISO, isBefore, isAfter } from "date-fns";
-
-interface Metric {
-  title: string;
-  value: number;
-}
-
-interface ChartData {
-  title: string;
-  data: any;
-  options: any;
-}
-
-interface TableData {
-  timestamp: string;
-  impressions: number;
-  clicks: number;
-  cost: number;
-  conversions: number;
-}
+import { Metric, TableData, ChartData } from "../types";
 
 const rawData = data.data as TableData[];
 

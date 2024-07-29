@@ -13,11 +13,7 @@
 
 <script setup lang="ts">
 import { defineProps } from "vue";
-
-interface Metric {
-  title: string;
-  value: number;
-}
+import { Metric } from "../types";
 
 const props = defineProps<{
   metrics: Metric[];

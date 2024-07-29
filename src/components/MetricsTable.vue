@@ -30,14 +30,7 @@
 
 <script setup lang="ts">
 import { defineProps } from "vue";
-
-interface TableData {
-  timestamp: string;
-  impressions: number;
-  clicks: number;
-  cost: number;
-  conversions: number;
-}
+import { TableData } from "../types";
 
 const props = defineProps<{
   tableData: TableData[];

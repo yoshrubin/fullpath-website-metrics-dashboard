@@ -1,5 +1,11 @@
-# Vue 3 + TypeScript + Vite
+# Website Metrics Dashboard
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A simple website metrics dashboard built with [Vue 3](https://vuejs.org/) and [Vite](https://vitejs.dev/).
+Using Chart.js for the graphs and Tailwind CSS for the styling with some date-fns for date formatting.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Usage
+
+1. Clone the repository `cd website-metrics-dashboard`
+2. Install dependencies `npm install`
+3. Start the development server `npm run dev`
+4. Open the browser at `http://localhost:5173`

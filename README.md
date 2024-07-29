@@ -1,6 +1,7 @@
 # Website Metrics Dashboard
 
 A simple website metrics dashboard built with [Vue 3](https://vuejs.org/) and [Vite](https://vitejs.dev/).
+
 Using Chart.js for the graphs and Tailwind CSS for the styling with some date-fns for date formatting.
 
 ## Usage

@@ -37,8 +37,8 @@ import KeyMetrics from "./KeyMetrics.vue";
 import LineChart from "./LineChart.vue";
 import MetricsTable from "./MetricsTable.vue";
 import data from "../sample.json";
-import { format, parseISO, isBefore, isAfter } from "date-fns";
-import { Metric, TableData, ChartData } from "../types";
+import { format, parseISO, isBefore, isAfter, isEqual } from "date-fns";
+import { Metric, TableData, ChartData } from "../types/types";
 
 const rawData = data.data as TableData[];
 
@@ -67,11 +67,25 @@ onMounted(() => {
 });
 
 // Filter the data based on the start and end dates
-const filteredData = computed(() => {
+const filteredData = computed<TableData[]>(() => {
   if (startDate.value && endDate.value) {
     return rawData.filter((item) => {
       const date = new Date(item.timestamp);
-      return isAfter(date, startDate.value) && isBefore(date, endDate.value);
+      if (startDate.value && endDate.value) {
+        return (
+          (isEqual(date, startDate.value) || isAfter(date, startDate.value)) &&
+          (isEqual(date, endDate.value) || isBefore(date, endDate.value))
+        );
+      }
+      if (!startDate.value && !endDate.value) {
+        return true;
+      }
+      if (startDate.value && !endDate.value) {
+        return isAfter(date, startDate.value);
+      }
+      if (!startDate.value && endDate.value) {
+        return isBefore(date, endDate.value);
+      }
     });
   }
   return rawData;
@@ -82,10 +96,10 @@ const formattedTableData = computed<TableData[]>(() => {
   return filteredData.value.map((item) => {
     return {
       timestamp: format(parseISO(item.timestamp), "MMM dd, yyyy"),
-      impressions: item.impressions.toLocaleString(),
-      clicks: item.clicks.toLocaleString(),
-      cost: item.cost.toFixed(2).toLocaleString(),
-      conversions: item.conversions.toLocaleString(),
+      impressions: item.impressions,
+      clicks: item.clicks,
+      cost: item.cost,
+      conversions: item.conversions,
     };
   });
 });
@@ -112,19 +126,19 @@ const keyMetrics = computed<Metric[]>(() => {
   return [
     {
       title: "Total Impressions",
-      value: totalImpressions.toLocaleString(),
+      value: totalImpressions,
     },
     {
       title: "Total Clicks",
-      value: totalClicks.toLocaleString(),
+      value: totalClicks,
     },
     {
       title: "Total Cost",
-      value: totalCost.toLocaleString(),
+      value: totalCost,
     },
     {
       title: "Total Conversions",
-      value: totalConversions.toLocaleString(),
+      value: totalConversions,
     },
   ];
 });

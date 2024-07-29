@@ -6,14 +6,14 @@
       :key="metric.title"
     >
       <h3 class="text-lg font-semibold">{{ metric.title }}</h3>
-      <p class="text-xl">{{ metric.value }}</p>
+      <p class="text-xl">{{ metric.value.toLocaleString() }}</p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { defineProps } from "vue";
-import { Metric } from "../types";
+import { Metric } from "../types/types";
 
 const props = defineProps<{
   metrics: Metric[];

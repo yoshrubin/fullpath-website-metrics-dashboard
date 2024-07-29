@@ -16,6 +16,10 @@ import {
 } from "chart.js";
 import { Line } from "vue-chartjs";
 import "chartjs-adapter-date-fns";
+import type {
+  ChartData as ChartJSData,
+  ChartOptions as ChartJSOptions,
+} from "chart.js";
 
 ChartJS.register(
   CategoryScale,
@@ -29,7 +33,7 @@ ChartJS.register(
 );
 
 const props = defineProps<{
-  chartData: ChartData;
-  options?: ChartOptions;
+  chartData: ChartJSData<"line">;
+  options?: ChartJSOptions<"line">;
 }>();
 </script>

@@ -18,10 +18,14 @@
           class="hover:bg-gray-100 text-center"
         >
           <td class="py-2 px-4 border-b">{{ data.timestamp }}</td>
-          <td class="py-2 px-4 border-b">{{ data.impressions }}</td>
-          <td class="py-2 px-4 border-b">{{ data.cost }}</td>
-          <td class="py-2 px-4 border-b">{{ data.clicks }}</td>
-          <td class="py-2 px-4 border-b">{{ data.conversions }}</td>
+          <td class="py-2 px-4 border-b">
+            {{ data.impressions.toLocaleString() }}
+          </td>
+          <td class="py-2 px-4 border-b">{{ data.cost.toLocaleString() }}</td>
+          <td class="py-2 px-4 border-b">{{ data.clicks.toLocaleString() }}</td>
+          <td class="py-2 px-4 border-b">
+            {{ data.conversions.toLocaleString() }}
+          </td>
         </tr>
       </tbody>
     </table>
@@ -30,7 +34,7 @@
 
 <script setup lang="ts">
 import { defineProps } from "vue";
-import { TableData } from "../types";
+import { TableData } from "../types/types";
 
 const props = defineProps<{
   tableData: TableData[];

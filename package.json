@@ -15,8 +15,7 @@
     "chartjs-adapter-date-fns": "^3.0.0",
     "date-fns": "^3.6.0",
     "vue": "^3.4.31",
-    "vue-chartjs": "^5.3.1",
-    "vue-router": "^4.4.0"
+    "vue-chartjs": "^5.3.1"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
